@@ -1,3 +1,4 @@
+// app/settings/page.jsx
 "use client";
 
 import React, { useState } from "react";
@@ -59,65 +60,85 @@ export default function Settings() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <div className="bg-slate-800 backdrop-blur-sm p-6 rounded-xl w-full max-w-[95%] xl:max-w-[1200px] 2xl:max-w-[1400px]">
-        <h2 className="text-2xl font-bold mb-6 text-center">Ρυθμίσεις</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 md:p-8 bg-slate-900">
+      <div className="bg-slate-800 backdrop-blur-sm p-6 md:p-8 rounded-xl w-full max-w-[95%] xl:max-w-[1800px]">
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-white">Settings</h2>
 
-        {/* Team Controls */}
-        <TeamControls
-          numberOfTeams={numberOfTeams}
-          setNumberOfTeams={setNumberOfTeams}
-          playersPerTeam={playersPerTeam}
-          setPlayersPerTeam={setPlayersPerTeam}
-          roundDuration={roundDuration}
-          setRoundDuration={setRoundDuration}
-          styles={styles}
-        />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Left Column */}
+          <div className="space-y-8">
+            {/* Game Controls Section */}
+            <div className="bg-slate-700/50 rounded-xl p-6">
+              <h3 className="text-xl font-semibold mb-6 text-white">Game Controls</h3>
+              <div className="space-y-8">
+                <TeamControls
+                  numberOfTeams={numberOfTeams}
+                  setNumberOfTeams={setNumberOfTeams}
+                  playersPerTeam={playersPerTeam}
+                  setPlayersPerTeam={setPlayersPerTeam}
+                  roundDuration={roundDuration}
+                  setRoundDuration={setRoundDuration}
+                  styles={styles}
+                />
+                <RoundsSlider 
+                  numberOfRounds={numberOfRounds}
+                  setNumberOfRounds={setNumberOfRounds}
+                />
+              </div>
+            </div>
 
-        {/* Rounds Slider */}
-        <RoundsSlider 
-          numberOfRounds={numberOfRounds}
-          setNumberOfRounds={setNumberOfRounds}
-        />
+            {/* Teams Section */}
+            <div className="bg-slate-700/50 rounded-xl p-6">
+              <h3 className="text-xl font-semibold mb-6 text-white">Teams</h3>
+              <TeamList
+                teams={teams}
+                editingTeamId={editingTeamId}
+                setEditingTeamId={setEditingTeamId}
+                updateTeam={updateTeam}
+              />
+            </div>
+          </div>
 
-        {/* Team List */}
-        <TeamList
-          teams={teams}
-          editingTeamId={editingTeamId}
-          setEditingTeamId={setEditingTeamId}
-          updateTeam={updateTeam}
-        />
+          {/* Right Column */}
+          <div className="space-y-8">
+            {/* Categories Section */}
+            <div className="bg-slate-700/50 rounded-xl p-6">
+              <h3 className="text-xl font-semibold mb-6 text-white">Categories</h3>
+              <CategorySelector
+                categories={categories}
+                toggleCategory={toggleCategory}
+                handleCategoryChange={handleCategoryChange}
+                categoryLabels={categoryLabels}
+                styles={styles}
+              />
+            </div>
 
-        {/* Music Volume Slider */}
-        <MusicVolumeSlider
-          musicVolume={musicVolume}
-          setMusicVolume={setMusicVolume}
-        />
-
-        {/* Category Selector */}
-        <CategorySelector
-          categories={categories}
-          toggleCategory={toggleCategory}
-          handleCategoryChange={handleCategoryChange}
-          categoryLabels={categoryLabels}
-          styles={styles}
-        />
-
-        {/* Special Settings */}
-        <SpecialSettings
-          noAds={noAds}
-          setNoAds={setNoAds}
-          categories={categories}
-          handleCategoryChange={handleCategoryChange}
-          styles={styles}
-        />
+            {/* Audio & Special Settings Section */}
+            <div className="bg-slate-700/50 rounded-xl p-6">
+              <h3 className="text-xl font-semibold mb-6 text-white">Audio & Special Settings</h3>
+              <div className="space-y-6">
+                <MusicVolumeSlider
+                  musicVolume={musicVolume}
+                  setMusicVolume={setMusicVolume}
+                />
+                <SpecialSettings
+                  noAds={noAds}
+                  setNoAds={setNoAds}
+                  categories={categories}
+                  handleCategoryChange={handleCategoryChange}
+                  styles={styles}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Back Button */}
         <button
           onClick={() => router.back()}
-          className="w-full mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+          className="w-full mt-8 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
         >
-          Επιστροφή στην αρχική
+          Return to Main Menu
         </button>
       </div>
 

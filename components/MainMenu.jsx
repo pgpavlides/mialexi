@@ -1,32 +1,16 @@
 "use client";
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useVantaBackground } from '@/hooks/useVantaBackground';
-import { Play, Settings, Info, Maximize, Minimize } from 'lucide-react';
+import useFullscreen from '@/hooks/useFullscreen';
+import { Play, Settings, Info } from 'lucide-react';
 
 export default function MainMenu() {
   const backgroundRef = useVantaBackground();
-  const [isFullscreen, setIsFullscreen] = useState(false);
-
-  useEffect(() => {
-    const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
-
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
-  }, []);
-
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
-  };
+  const { FullscreenButton } = useFullscreen();
+  
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -68,22 +52,7 @@ export default function MainMenu() {
 
   return (
     <div ref={backgroundRef} className="relative min-h-screen overflow-hidden">
-      <motion.button
-        onClick={toggleFullscreen}
-        className="fixed top-4 right-4 z-50 w-12 h-12 flex items-center justify-center 
-                   bg-purple-500/20 hover:bg-purple-500/30 backdrop-blur-sm 
-                   rounded-full transition-colors duration-300"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-      >
-        {isFullscreen ? (
-          <Minimize className="w-6 h-6 text-purple-200" />
-        ) : (
-          <Maximize className="w-6 h-6 text-purple-200" />
-        )}
-      </motion.button>
+      <FullscreenButton className="!right-4 !left-auto" />
 
       <motion.div 
         className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4"

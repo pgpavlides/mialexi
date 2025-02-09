@@ -51,7 +51,8 @@ const CategorySelector = ({
               return (
                 <div
                   key={key}
-                  className="flex items-center p-4 bg-slate-900 rounded-lg hover:bg-slate-950 transition-colors"
+                  // Default: flex-row for mobile; Desktop (lg) becomes flex-col
+                  className="flex items-center lg:flex-col lg:items-start p-4 bg-slate-900 rounded-lg hover:bg-slate-950 transition-colors"
                 >
                   <div className="flex items-center flex-1 space-x-3">
                     {IconComponent && (
@@ -59,14 +60,17 @@ const CategorySelector = ({
                     )}
                     <span className="text-base">{label}</span>
                   </div>
-                  <label className={styles.switch}>
-                    <input
-                      type="checkbox"
-                      checked={categories[key]}
-                      onChange={() => handleCategoryChange(key)}
-                    />
-                    <span className={styles.slider}></span>
-                  </label>
+                  {/* On desktop, add margin on top so the toggle sits below the name */}
+                  <div className="lg:mt-4">
+                    <label className={styles.switch}>
+                      <input
+                        type="checkbox"
+                        checked={categories[key]}
+                        onChange={() => handleCategoryChange(key)}
+                      />
+                      <span className={styles.slider}></span>
+                    </label>
+                  </div>
                 </div>
               );
             })}

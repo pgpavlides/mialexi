@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Pause, Play } from "lucide-react";
 import { useRouter } from "next/navigation";
 import useGameStore from "@/store/gameStore";
 
@@ -33,25 +33,25 @@ const cardsData = {
 // Animation variants
 const fadeIn = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1 }
+  visible: { opacity: 1 },
 };
 
 const slideUp = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0 },
 };
 
 const scaleIn = {
   hidden: { opacity: 0, scale: 0.8 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     scale: 1,
     transition: {
       type: "spring",
       stiffness: 300,
-      damping: 25
-    }
-  }
+      damping: 25,
+    },
+  },
 };
 
 const BackButton = ({ onClick }) => (
@@ -70,7 +70,8 @@ const BackButton = ({ onClick }) => (
 );
 
 export default function Xoris5Game() {
-  const { teams, categories, roundDuration, numberOfRounds, updateTeam } = useGameStore();
+  const { teams, categories, roundDuration, numberOfRounds, updateTeam } =
+    useGameStore();
   const router = useRouter();
 
   const [currentTeamIndex, setCurrentTeamIndex] = useState(0);
@@ -80,24 +81,25 @@ export default function Xoris5Game() {
   const totalRounds = teams.length * numberOfRounds;
   const [roundsLeft, setRoundsLeft] = useState(totalRounds);
   const [showConfirmPopup, setShowConfirmPopup] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
+  // Fixed timer logic
   useEffect(() => {
     let timer;
-    if (phase === "playing") {
-      setTimeLeft(roundDuration);
+    if (phase === "playing" && !isPaused) {
       timer = setInterval(() => {
-        setTimeLeft((prev) => {
-          if (prev <= 1) {
+        setTimeLeft((t) => {
+          if (t <= 1) {
             clearInterval(timer);
             setPhase("timeup");
             return 0;
           }
-          return prev - 1;
+          return t - 1;
         });
       }, 1000);
     }
-    return () => timer && clearInterval(timer);
-  }, [phase, roundDuration]);
+    return () => clearInterval(timer);
+  }, [phase, isPaused]);
 
   const getRandomCard = () => {
     const enabledCategories = Object.entries(categories)
@@ -122,13 +124,11 @@ export default function Xoris5Game() {
     }
     setCurrentCard(card);
     setPhase("playing");
-    if (document.documentElement.requestFullscreen) {
-      document.documentElement
-        .requestFullscreen()
-        .catch((err) =>
-          console.error("Error attempting to enable full-screen mode:", err)
-        );
-    }
+    setIsPaused(false);
+  };
+
+  const handlePauseToggle = () => {
+    setIsPaused(!isPaused);
   };
 
   const handleSkip = () => {
@@ -156,12 +156,10 @@ export default function Xoris5Game() {
     setRoundsLeft((prev) => prev - 1);
     if (roundsLeft - 1 <= 0) {
       setPhase("finished");
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      }
     } else {
       setCurrentTeamIndex((prev) => (prev + 1) % teams.length);
       setPhase("ready");
+      setTimeLeft(roundDuration);
     }
   };
 
@@ -170,8 +168,7 @@ export default function Xoris5Game() {
   };
 
   const handleConfirmBack = () => {
- 
-    router.push('/play');
+    router.push("/play");
   };
 
   const handleCancelBack = () => {
@@ -187,6 +184,51 @@ export default function Xoris5Game() {
     return "1.5rem";
   };
 
+  const PauseButton = () => (
+    <motion.button
+      onClick={handlePauseToggle}
+      className="fixed top-4 right-4 z-50 w-12 h-12 flex items-center justify-center 
+                 bg-purple-500/20 hover:bg-purple-500/30 backdrop-blur-sm 
+                 rounded-full transition-colors duration-300"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+    >
+      {isPaused ? (
+        <Play className="w-6 h-6 text-purple-200" />
+      ) : (
+        <Pause className="w-6 h-6 text-purple-200" />
+      )}
+    </motion.button>
+  );
+
+  const PauseScreen = () => (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 
+                 flex items-center justify-center"
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        className="bg-slate-800 p-8 rounded-xl text-center max-w-md mx-4"
+      >
+        <h2 className="text-3xl font-bold text-white mb-6">Game Paused</h2>
+        <motion.button
+          onClick={handlePauseToggle}
+          className="px-8 py-4 bg-purple-500 text-white rounded-lg 
+                    hover:bg-purple-600 transition-colors text-xl"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Resume Game
+        </motion.button>
+      </motion.div>
+    </motion.div>
+  );
+
   const titleFontSize =
     currentCard && currentCard.word ? getTitleFontSize(currentCard.word) : "4rem";
 
@@ -198,8 +240,11 @@ export default function Xoris5Game() {
       className="h-screen w-full relative flex flex-col items-center justify-center p-4 bg-slate-900"
     >
       <BackButton onClick={handleBackClick} />
+      {phase === "playing" && <PauseButton />}
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
+        {isPaused && <PauseScreen />}
+
         {showConfirmPopup && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -276,7 +321,6 @@ export default function Xoris5Game() {
             exit="hidden"
             className="w-full max-w-2xl h-[calc(100vh-120px)] flex flex-col justify-between px-4"
           >
-            {/* Top Section with Timer */}
             <motion.div
               className="h-1.5 rounded-full bg-indigo-500 mb-4 origin-left"
               initial={{ width: "100%" }}
@@ -284,12 +328,10 @@ export default function Xoris5Game() {
               transition={{ ease: "linear", duration: 1 }}
             />
 
-            {/* Middle Section with Card */}
             <motion.div
               variants={scaleIn}
               className="bg-white bg-opacity-10 p-6 rounded-xl text-center text-white flex flex-col gap-4 min-h-[300px] mb-4"
             >
-              {/* Main Word Section */}
               <motion.div
                 variants={slideUp}
                 className="border-b-2 border-white pb-4 mb-4"
@@ -302,7 +344,6 @@ export default function Xoris5Game() {
                 </h1>
               </motion.div>
 
-              {/* Forbidden Words Section */}
               <motion.div className="flex flex-col gap-3">
                 {currentCard.forbidden.map((word, index) => (
                   <motion.p
@@ -318,7 +359,6 @@ export default function Xoris5Game() {
               </motion.div>
             </motion.div>
 
-            {/* Bottom Section with Timer and Buttons */}
             <motion.div
               variants={slideUp}
               className="flex flex-col gap-4 mt-auto"
@@ -326,7 +366,10 @@ export default function Xoris5Game() {
               <div className="text-center">
                 <motion.span
                   animate={{ scale: timeLeft <= 10 ? [1, 1.1, 1] : 1 }}
-                  transition={{ repeat: timeLeft <= 10 ? Infinity : 0, duration: 0.5 }}
+                  transition={{
+                    repeat: timeLeft <= 10 ? Infinity : 0,
+                    duration: 0.5,
+                  }}
                   className="text-2xl text-white"
                 >
                   Time Left: {timeLeft}s
@@ -364,10 +407,7 @@ export default function Xoris5Game() {
             exit="hidden"
             className="text-center"
           >
-            <motion.h1
-              variants={slideUp}
-              className="text-5xl text-white mb-4"
-            >
+            <motion.h1 variants={slideUp} className="text-5xl text-white mb-4">
               TIME'S UP!
             </motion.h1>
             <motion.button
@@ -391,16 +431,10 @@ export default function Xoris5Game() {
             exit="hidden"
             className="text-center"
           >
-            <motion.h1
-              variants={slideUp}
-              className="text-5xl text-white mb-4"
-            >
+            <motion.h1 variants={slideUp} className="text-5xl text-white mb-4">
               Game Over
             </motion.h1>
-            <motion.h2
-              variants={slideUp}
-              className="text-3xl text-white mb-4"
-            >
+            <motion.h2 variants={slideUp} className="text-3xl text-white mb-4">
               Final Scores
             </motion.h2>
             <motion.ul
@@ -415,7 +449,7 @@ export default function Xoris5Game() {
                   transition={{ delay: index * 0.1 }}
                   className="text-2xl mb-2"
                 >
-                   {team.name}: {team.score || 0} points
+                  {team.name}: {team.score || 0} points
                 </motion.li>
               ))}
             </motion.ul>
@@ -424,9 +458,6 @@ export default function Xoris5Game() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => {
-                if (document.exitFullscreen) {
-                  document.exitFullscreen();
-                }
                 window.location.reload();
               }}
               className="px-8 py-4 text-2xl bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors"

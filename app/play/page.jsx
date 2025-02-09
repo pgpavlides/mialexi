@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { useVantaBackground } from "@/hooks/useVantaBackground";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+import useFullscreen from '@/hooks/useFullscreen';
+
 
 // Back button component.
 const BackButton = () => {
@@ -57,10 +59,12 @@ const itemVariants = {
 
 export default function Play() {
   const backgroundRef = useVantaBackground();
+  const { FullscreenButton } = useFullscreen();
 
   return (
     <div ref={backgroundRef} className="min-h-screen w-full p-4 md:p-8 relative">
       <BackButton />
+      <FullscreenButton />
 
       <motion.div
         initial={{ opacity: 0, y: -20 }}

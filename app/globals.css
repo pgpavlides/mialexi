@@ -53,3 +53,31 @@ body {
 body {
   font-family: 'OpenDyslexic', system-ui, -apple-system, sans-serif;
 }
+
+/* ===== Dark Themed Custom Scrollbar for WebKit Browsers ===== */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e; /* Dark background for the track */
+  border: 1px solid #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8a2be2, #9b59b6); /* Gradient purple thumb */
+  border-radius: 10px;
+  border: 3px solid #1e1e1e; /* Matches the dark track background */
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #9b59b6, #af7ac5); /* Lighter gradient on hover */
+}
+
+/* ===== Dark Themed Custom Scrollbar for Firefox ===== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #8a2be2 #1e1e1e; /* thumb color, track color */
+}

@@ -1,16 +1,15 @@
 "use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { useVantaBackground } from '@/hooks/useVantaBackground';
-import useFullscreen from '@/hooks/useFullscreen';
-import { Play, Settings, Info } from 'lucide-react';
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { useVantaBackground } from "@/hooks/useVantaBackground";
+import useFullscreen from "@/hooks/useFullscreen";
+import { Play, Settings, Info } from "lucide-react";
 
 export default function MainMenu() {
   const backgroundRef = useVantaBackground();
   const { FullscreenButton } = useFullscreen();
-  
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -18,17 +17,17 @@ export default function MainMenu() {
       opacity: 1,
       transition: {
         delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1
-    }
+      opacity: 1,
+    },
   };
 
   const logoVariants = {
@@ -39,22 +38,26 @@ export default function MainMenu() {
       transition: {
         type: "spring",
         stiffness: 200,
-        damping: 15
-      }
-    }
+        damping: 15,
+      },
+    },
   };
 
   const menuItems = [
-    { href: '/play', text: 'Play', icon: Play },
-    { href: '/settings', text: 'Settings', icon: Settings },
-    { href: '/credits', text: 'Credits', icon: Info }
+    { href: "/play", text: "Play", icon: Play },
+    { href: "/settings", text: "Settings", icon: Settings },
+    { href: "/credits", text: "Credits", icon: Info },
   ];
 
   return (
-    <div ref={backgroundRef} className="relative min-h-screen overflow-hidden">
+    <div
+      ref={backgroundRef}
+      className={`relative min-h-screen overflow-hidden ${
+        isIOS && isFullscreen ? "ios-fullscreen" : ""
+      }`}
+    >
       <FullscreenButton className="!right-4 !left-auto" />
-
-      <motion.div 
+      <motion.div
         className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4"
         variants={containerVariants}
         initial="hidden"
@@ -76,7 +79,7 @@ export default function MainMenu() {
           />
         </motion.div>
 
-        <motion.ul 
+        <motion.ul
           className="space-y-6 md:space-y-8 w-full max-w-sm"
           variants={containerVariants}
         >

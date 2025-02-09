@@ -7,6 +7,7 @@ import { useVantaBackground } from "@/hooks/useVantaBackground";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
+// Back button component.
 const BackButton = () => {
   const router = useRouter();
 
@@ -39,7 +40,7 @@ const cards = [
   { id: 6, title: "Game 6", imageUrl: null, route: "#" },
 ];
 
-const container = {
+const containerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -49,7 +50,7 @@ const container = {
   },
 };
 
-const item = {
+const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
 };
@@ -58,10 +59,7 @@ export default function Play() {
   const backgroundRef = useVantaBackground();
 
   return (
-    <div
-      ref={backgroundRef}
-      className="min-h-screen w-full p-4 md:p-8 relative"
-    >
+    <div ref={backgroundRef} className="min-h-screen w-full p-4 md:p-8 relative">
       <BackButton />
 
       <motion.div
@@ -77,19 +75,19 @@ export default function Play() {
       </motion.div>
 
       <motion.div
-        variants={container}
+        variants={containerVariants}
         initial="hidden"
         animate="show"
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
       >
         {cards.map((card) => (
-          <motion.div key={card.id} variants={item}>
+          <motion.div key={card.id} variants={itemVariants}>
             <Link href={card.route}>
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 className="bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg cursor-pointer
-                         border border-white/20 hover:border-purple-500/50 transition-colors"
+                           border border-white/20 hover:border-purple-500/50 transition-colors"
               >
                 <div
                   className={`relative w-full h-48 ${

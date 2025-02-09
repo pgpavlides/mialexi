@@ -170,9 +170,7 @@ export default function Xoris5Game() {
   };
 
   const handleConfirmBack = () => {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
+ 
     router.push('/play');
   };
 

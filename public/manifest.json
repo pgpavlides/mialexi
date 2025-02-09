@@ -1,0 +1,21 @@
+{
+    "name": "Mia Lexi",
+    "short_name": "Mia Lexi",
+    "description": "A word-guessing game for friends and family",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#0f172a",
+    "icons": [
+      {
+        "src": "/logo/logo_mialexi_test.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/logo/logo_mialexi_test.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

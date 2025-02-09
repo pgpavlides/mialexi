@@ -9,7 +9,7 @@ import { Play, Settings, Info } from "lucide-react";
 
 export default function MainMenu() {
   const backgroundRef = useVantaBackground();
-  const { FullscreenButton } = useFullscreen();
+  const { FullscreenButton, isFullscreen, isIOS } = useFullscreen();
 
   const containerVariants = {
     hidden: { opacity: 0 },

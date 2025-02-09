@@ -241,7 +241,7 @@ const GameCard = ({ card, onInfoClick }) => {
 
 export default function Play() {
   const backgroundRef = useVantaBackground();
-  const { FullscreenButton } = useFullscreen();
+  const { FullscreenButton, isFullscreen, isIOS } = useFullscreen();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedGame, setSelectedGame] = useState({ title: "", instructions: null });
 

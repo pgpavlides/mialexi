@@ -5,10 +5,14 @@ import { Maximize, Minimize } from 'lucide-react';
 const useFullscreen = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Detect iOS
-    const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    setIsMounted(true);
+    // Detect iOS only on client side
+    const ios = typeof navigator !== 'undefined' 
+      ? /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream 
+      : false;
     setIsIOS(ios);
 
     const handleFullscreenChange = () => {
@@ -24,11 +28,9 @@ const useFullscreen = () => {
 
   const toggleFullscreen = async () => {
     if (isIOS) {
-      // For iOS, toggle a class that uses CSS to make the content fullscreen-like
       const root = document.documentElement;
       if (!isFullscreen) {
         root.classList.add('ios-fullscreen');
-        // Scroll to top to ensure proper positioning
         window.scrollTo(0, 0);
         setIsFullscreen(true);
       } else {
@@ -36,7 +38,6 @@ const useFullscreen = () => {
         setIsFullscreen(false);
       }
     } else {
-      // Standard fullscreen API for other devices
       if (!document.fullscreenElement) {
         try {
           await document.documentElement.requestFullscreen();
@@ -54,6 +55,8 @@ const useFullscreen = () => {
   };
 
   const FullscreenButton = ({ className = '', iconClassName = '' }) => {
+    if (!isMounted) return null; // Don't render button until client-side
+
     return (
       <motion.button
         onClick={toggleFullscreen}
@@ -79,7 +82,7 @@ const useFullscreen = () => {
     isFullscreen,
     toggleFullscreen,
     FullscreenButton,
-    isIOS
+    isIOS: isMounted && isIOS // Only return isIOS when mounted
   };
 };
 

@@ -1,87 +1,41 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Maximize, Minimize } from 'lucide-react';
+import screenfull from 'screenfull';
 
 const useFullscreen = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isIOS, setIsIOS] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isSupported, setIsSupported] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    const ios = typeof navigator !== 'undefined' 
-      ? /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream 
-      : false;
-    setIsIOS(ios);
+    setIsSupported(screenfull.isEnabled);
 
-    // Handle scroll events for iOS
-    if (ios) {
-      const handleScroll = () => {
-        const currentScrollY = window.scrollY;
-        
-        // If scrolled up more than 50px, trigger the "hide UI" behavior
-        if (currentScrollY > lastScrollY && currentScrollY > 50) {
-          document.documentElement.classList.add('ios-scroll-up');
-        } else {
-          document.documentElement.classList.remove('ios-scroll-up');
-        }
-        
-        setLastScrollY(currentScrollY);
-      };
-
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
-
-    // Regular fullscreen handling for non-iOS
-    const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
+    const handleChange = () => {
+      setIsFullscreen(screenfull.isFullscreen);
     };
 
-    if (!ios) {
-      document.addEventListener('fullscreenchange', handleFullscreenChange);
-      return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    if (screenfull.isEnabled) {
+      screenfull.on('change', handleChange);
+      return () => {
+        screenfull.off('change', handleChange);
+      };
     }
-  }, [lastScrollY]);
+  }, []);
 
   const toggleFullscreen = async () => {
-    if (isIOS) {
-      const root = document.documentElement;
-      if (!isFullscreen) {
-        root.classList.add('ios-fullscreen');
-        document.body.classList.add('ios-fullscreen');
-        // Keep the scroll position
-        const currentScrollY = window.scrollY;
-        if (currentScrollY > 50) {
-          root.classList.add('ios-scroll-up');
-        }
-        setIsFullscreen(true);
-      } else {
-        root.classList.remove('ios-fullscreen');
-        root.classList.remove('ios-scroll-up');
-        document.body.classList.remove('ios-fullscreen');
-        setIsFullscreen(false);
-      }
-    } else {
-      if (!document.fullscreenElement) {
-        try {
-          await document.documentElement.requestFullscreen();
-        } catch (err) {
-          console.error('Error attempting to enable fullscreen:', err);
-        }
-      } else {
-        try {
-          await document.exitFullscreen();
-        } catch (err) {
-          console.error('Error attempting to exit fullscreen:', err);
-        }
+    if (screenfull.isEnabled) {
+      try {
+        await screenfull.toggle();
+      } catch (err) {
+        console.error('Error toggling fullscreen:', err);
       }
     }
   };
 
   const FullscreenButton = ({ className = '', iconClassName = '' }) => {
-    if (!isMounted) return null;
+    if (!isMounted || !isSupported) return null;
 
     return (
       <motion.button
@@ -108,7 +62,7 @@ const useFullscreen = () => {
     isFullscreen,
     toggleFullscreen,
     FullscreenButton,
-    isIOS: isMounted && isIOS
+    isSupported
   };
 };
 

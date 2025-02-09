@@ -241,9 +241,40 @@ const GameCard = ({ card, onInfoClick }) => {
 
 export default function Play() {
   const backgroundRef = useVantaBackground();
-  const { FullscreenButton, isFullscreen, isIOS } = useFullscreen();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedGame, setSelectedGame] = useState({ title: "", instructions: null });
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isSupported, setIsSupported] = useState(false);
+
+  useEffect(() => {
+    setIsSupported(screenfull.isEnabled);
+
+    const handleChange = () => {
+      setIsFullscreen(screenfull.isFullscreen);
+    };
+
+    if (screenfull.isEnabled) {
+      screenfull.on('change', handleChange);
+      return () => {
+        screenfull.off('change', handleChange);
+      };
+    }
+  }, []);
+
+  const toggleFullscreen = async () => {
+    if (screenfull.isEnabled) {
+      try {
+        if (!isFullscreen) {
+          // If entering fullscreen, target the background div
+          await screenfull.request(backgroundRef.current);
+        } else {
+          await screenfull.exit();
+        }
+      } catch (err) {
+        console.error('Error toggling fullscreen:', err);
+      }
+    }
+  };
 
   const handleInfoClick = (gameTitle, instructions) => {
     setSelectedGame({ title: gameTitle, instructions });
@@ -251,41 +282,72 @@ export default function Play() {
   };
 
   return (
-    <div ref={backgroundRef} className="min-h-screen w-full p-4 md:p-8 relative">
-      <BackButton />
-      <FullscreenButton />
+    <div
+      ref={backgroundRef}
+      className={`min-h-screen w-full relative ${
+        isFullscreen ? 'h-screen overflow-y-auto' : ''
+      }`}
+    >
+      <div className="p-4 md:p-8">
+        <BackButton className="z-50" />
+        
+        {isSupported && (
+          <motion.button
+            onClick={toggleFullscreen}
+            className="fixed right-4 top-4 z-50 w-12 h-12 flex items-center justify-center 
+                     bg-purple-500/20 hover:bg-purple-500/30 backdrop-blur-sm 
+                     rounded-full transition-colors duration-300"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            {isFullscreen ? (
+              <svg className="w-6 h-6 text-purple-200" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6 text-purple-200" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8V3m0 0h5M3 3l6 6m-6 3v5m0 0h5m-5 0l6-6m6 0v5m0 0h-5m5 0l-6-6m0-5h5m0 0v5m0-5l-6 6" />
+              </svg>
+            )}
+          </motion.button>
+        )}
 
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mt-16 md:mt-0"
-      >
-        <h1 className="text-3xl font-bold mb-4 text-center text-white">Play</h1>
-        <p className="text-center mb-8 text-white/80">
-          Get ready to play! The game will start soon. Enjoy the experience!
-        </p>
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mt-16 md:mt-0"
+        >
+          <h1 className="text-3xl font-bold mb-4 text-center text-white">Play</h1>
+          <p className="text-center mb-8 text-white/80">
+            Get ready to play! The game will start soon. Enjoy the experience!
+          </p>
+        </motion.div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-      >
-        {cards.map((card) => (
-          <motion.div key={card.id} variants={itemVariants}>
-            <GameCard card={card} onInfoClick={handleInfoClick} />
-          </motion.div>
-        ))}
-      </motion.div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 ${
+            isFullscreen ? 'pb-20' : ''
+          }`}
+        >
+          {cards.map((card) => (
+            <motion.div key={card.id} variants={itemVariants}>
+              <GameCard card={card} onInfoClick={handleInfoClick} />
+            </motion.div>
+          ))}
+        </motion.div>
 
-      <InstructionsModal 
-        isOpen={modalOpen} 
-        setIsOpen={setModalOpen} 
-        gameTitle={selectedGame.title}
-        instructions={selectedGame.instructions}
-      />
+        <InstructionsModal 
+          isOpen={modalOpen} 
+          setIsOpen={setModalOpen} 
+          gameTitle={selectedGame.title}
+          instructions={selectedGame.instructions}
+        />
+      </div>
     </div>
   );
 }

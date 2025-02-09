@@ -1,0 +1,23 @@
+[
+    { "word": "Imagine", "forbidden": ["John", "Peace", "Dream", "World", "Song"] },
+    { "word": "Thriller", "forbidden": ["Michael", "Zombie", "Dance", "Night", "Pop"] },
+    { "word": "Bohemian Rhapsody", "forbidden": ["Queen", "Freddie", "Mercury", "Opera", "Rock"] },
+    { "word": "Hotel California", "forbidden": ["Eagles", "California", "Hotel", "Rock", "Desert"] },
+    { "word": "Stairway to Heaven", "forbidden": ["Led", "Zeppelin", "Heaven", "Stairway", "Rock"] },
+    { "word": "Sweet Child O' Mine", "forbidden": ["Guns", "N' Roses", "Sweet", "Child", "Mine"] },
+    { "word": "Billie Jean", "forbidden": ["Michael", "Jackson", "Dance", "Beat", "Pop"] },
+    { "word": "Smells Like Teen Spirit", "forbidden": ["Nirvana", "Grunge", "Spirit", "Teen", "Rebel"] },
+    { "word": "Like a Rolling Stone", "forbidden": ["Bob", "Dylan", "Stone", "Rolling", "Lyrics"] },
+    { "word": "I Will Always Love You", "forbidden": ["Whitney", "Love", "Forever", "Ballad", "Soul"] },
+    { "word": "Hey Jude", "forbidden": ["Beatles", "Jude", "Song", "Remember", "Take"] },
+    { "word": "Wonderwall", "forbidden": ["Oasis", "Wall", "Song", "Dream", "Britpop"] },
+    { "word": "Lose Yourself", "forbidden": ["Eminem", "Rap", "Lose", "Moments", "Chance"] },
+    { "word": "Rolling in the Deep", "forbidden": ["Adele", "Deep", "Rolling", "Cry", "Heart"] },
+    { "word": "Uptown Funk", "forbidden": ["Bruno", "Funk", "Dance", "Party", "Groove"] },
+    { "word": "Shape of You", "forbidden": ["Ed", "Sheeran", "Shape", "Love", "Dance"] },
+    { "word": "Sorry", "forbidden": ["Justin", "Bieber", "Apology", "Heart", "Regret"] },
+    { "word": "Blinding Lights", "forbidden": ["The", "Weeknd", "Night", "City", "Drive"] },
+    { "word": "Poker Face", "forbidden": ["Lady", "Gaga", "Poker", "Game", "Face"] },
+    { "word": "Bad Guy", "forbidden": ["Billie", "Eilish", "Bad", "Villain", "Pop"] }
+  ]
+  

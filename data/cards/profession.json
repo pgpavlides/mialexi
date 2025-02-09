@@ -1,0 +1,23 @@
+[
+    { "word": "Doctor", "forbidden": ["Hospital", "Patient", "Medicine", "Heal", "Nurse"] },
+    { "word": "Engineer", "forbidden": ["Design", "Build", "Machine", "Tech", "Calculate"] },
+    { "word": "Teacher", "forbidden": ["School", "Class", "Educate", "Student", "Lesson"] },
+    { "word": "Artist", "forbidden": ["Paint", "Canvas", "Sculpt", "Creative", "Inspire"] },
+    { "word": "Lawyer", "forbidden": ["Court", "Case", "Legal", "Defend", "Trial"] },
+    { "word": "Chef", "forbidden": ["Cook", "Kitchen", "Food", "Recipe", "Restaurant"] },
+    { "word": "Pilot", "forbidden": ["Airplane", "Fly", "Cockpit", "Sky", "Airport"] },
+    { "word": "Nurse", "forbidden": ["Hospital", "Patient", "Care", "Medicine", "Doctor"] },
+    { "word": "Scientist", "forbidden": ["Lab", "Experiment", "Research", "Theory", "Data"] },
+    { "word": "Musician", "forbidden": ["Instrument", "Song", "Band", "Tune", "Melody"] },
+    { "word": "Writer", "forbidden": ["Book", "Pen", "Story", "Novel", "Author"] },
+    { "word": "Dancer", "forbidden": ["Ballet", "Stage", "Rhythm", "Move", "Grace"] },
+    { "word": "Actor", "forbidden": ["Movie", "Theater", "Role", "Scene", "Drama"] },
+    { "word": "Architect", "forbidden": ["Design", "Building", "Structure", "Plan", "Draft"] },
+    { "word": "Firefighter", "forbidden": ["Fire", "Rescue", "Alarm", "Safety", "Bravery"] },
+    { "word": "Police", "forbidden": ["Officer", "Law", "Crime", "Badge", "Investigation"] },
+    { "word": "Mechanic", "forbidden": ["Car", "Fix", "Engine", "Repair", "Tool"] },
+    { "word": "Farmer", "forbidden": ["Crop", "Field", "Tractor", "Harvest", "Farm"] },
+    { "word": "Dentist", "forbidden": ["Teeth", "Cavity", "Smile", "Drill", "Clinic"] },
+    { "word": "Photographer", "forbidden": ["Camera", "Picture", "Lens", "Focus", "Shoot"] }
+  ]
+  

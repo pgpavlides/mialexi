@@ -1,0 +1,23 @@
+[
+    { "word": "Beyoncé", "forbidden": ["Destiny", "Carter", "Halo", "Sasha", "SingleLadies"] },
+    { "word": "Brad Pitt", "forbidden": ["FightClub", "Oscar", "Angel", "Tommy", "Celebrity"] },
+    { "word": "Rihanna", "forbidden": ["Umbrella", "Diamonds", "Fenty", "Pop", "Island"] },
+    { "word": "Oprah", "forbidden": ["TalkShow", "Angel", "Winfrey", "Empower", "Media"] },
+    { "word": "Leonardo DiCaprio", "forbidden": ["Titanic", "Oscar", "Inception", "Revenant", "Celebrity"] },
+    { "word": "Jennifer Lawrence", "forbidden": ["Hunger", "Games", "Mockingjay", "Oscar", "Actress"] },
+    { "word": "Will Smith", "forbidden": ["Fresh", "Prince", "Bel-Air", "Ali", "Blockbuster"] },
+    { "word": "Angelina Jolie", "forbidden": ["Mr. Anderson", "Maleficent", "UN", "Actress", "Famous"] },
+    { "word": "Tom Cruise", "forbidden": ["Mission", "Impossible", "Top", "Risky", "Blockbuster"] },
+    { "word": "Scarlett Johansson", "forbidden": ["Avenger", "Iron", "Marvel", "Actress", "Chameleon"] },
+    { "word": "Johnny Depp", "forbidden": ["Pirates", "Jack", "Sparrow", "Tim Burton", "Actor"] },
+    { "word": "Emma Watson", "forbidden": ["Hermione", "Magic", "Wizard", "Hogwarts", "Actress"] },
+    { "word": "Robert Downey Jr.", "forbidden": ["Iron", "Tony", "Marvel", "Genius", "Actor"] },
+    { "word": "Meryl Streep", "forbidden": ["Oscar", "Actress", "Drama", "Talent", "Legend"] },
+    { "word": "Chris Hemsworth", "forbidden": ["Thor", "Hammer", "Marvel", "Aussie", "Action"] },
+    { "word": "Denzel Washington", "forbidden": ["Training", "Day", "Oscar", "Drama", "Actor"] },
+    { "word": "Natalie Portman", "forbidden": ["Black", "Swan", "Actress", "Academy", "Drama"] },
+    { "word": "George Clooney", "forbidden": ["Ocean", "Bourne", "Sunglasses", "Actor", "Director"] },
+    { "word": "Miley Cyrus", "forbidden": ["Wrecking", "Ball", "Pop", "Hannah", "Teen"] },
+    { "word": "Kim Kardashian", "forbidden": ["Kanye", "Beauty", "Social", "Fame", "Reality"] }
+  ]
+  

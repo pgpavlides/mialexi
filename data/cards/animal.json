@@ -1,0 +1,27 @@
+[
+    { "word": "Cat", "forbidden": ["Meow", "Kitten", "Feline", "Purr", "Whiskers"] },
+    { "word": "Dog", "forbidden": ["Bark", "Puppy", "Canine", "Tail", "Fetch"] },
+    { "word": "Elephant", "forbidden": ["Trunk", "Tusks", "Large", "Jumbo", "Safari"] },
+    { "word": "Lion", "forbidden": ["King", "Roar", "Mane", "Pride", "Savannah"] },
+    { "word": "Tiger", "forbidden": ["Stripe", "Wild", "Feline", "Jungle", "Roar"] },
+    { "word": "Bear", "forbidden": ["Grizzly", "Hibernation", "Forest", "Honey", "Wild"] },
+    { "word": "Giraffe", "forbidden": ["Tall", "Neck", "Spots", "Safari", "Africa"] },
+    { "word": "Monkey", "forbidden": ["Banana", "Swing", "Jungle", "Primate", "Tree"] },
+    { "word": "Kangaroo", "forbidden": ["Australia", "Jump", "Pouch", "Marsupial", "Red"] },
+    { "word": "Panda", "forbidden": ["Bamboo", "China", "Cute", "Black", "White"] },
+    { "word": "Zebra", "forbidden": ["Stripes", "Africa", "Horse", "Wild", "Savannah"] },
+    { "word": "Horse", "forbidden": ["Gallop", "Stable", "Mane", "Saddle", "Race"] },
+    { "word": "Wolf", "forbidden": ["Howl", "Pack", "Forest", "Moon", "Wild"] },
+    { "word": "Fox", "forbidden": ["Clever", "Red", "Sly", "Hunt", "Bush"] },
+    { "word": "Rabbit", "forbidden": ["Hop", "Bunny", "Carrot", "Easter", "Fluffy"] },
+    { "word": "Deer", "forbidden": ["Antler", "Forest", "Wild", "Grace", "Bambi"] },
+    { "word": "Cheetah", "forbidden": ["Fast", "Spots", "Run", "Wild", "Safari"] },
+    { "word": "Penguin", "forbidden": ["Antarctica", "Waddle", "Cold", "Bird", "Ice"] },
+    { "word": "Owl", "forbidden": ["Night", "Hoot", "Wise", "Silent", "Flight"] },
+    { "word": "Dolphin", "forbidden": ["Swim", "Ocean", "Intelligent", "Flipper", "Mammal"] }
+  ]
+  
+
+
+
+ 

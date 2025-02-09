@@ -1,0 +1,23 @@
+[
+    { "word": "Paris", "forbidden": ["Eiffel", "Louvre", "Seine", "France", "City"] },
+    { "word": "Tokyo", "forbidden": ["Sushi", "Shibuya", "Samurai", "Japan", "Neon"] },
+    { "word": "Cairo", "forbidden": ["Pyramids", "Nile", "Egypt", "Pharaoh", "Desert"] },
+    { "word": "Sydney", "forbidden": ["Opera", "Harbor", "Australia", "Bridge", "DownUnder"] },
+    { "word": "New York", "forbidden": ["Statue", "Liberty", "Broadway", "Manhattan", "City"] },
+    { "word": "London", "forbidden": ["Big Ben", "Queen", "British", "Tower", "Tea"] },
+    { "word": "Rome", "forbidden": ["Colosseum", "Vatican", "Italy", "Caesar", "Ancient"] },
+    { "word": "Berlin", "forbidden": ["Wall", "Brandenburg", "Germany", "Capital", "History"] },
+    { "word": "Moscow", "forbidden": ["Kremlin", "Russia", "Cold", "Red", "City"] },
+    { "word": "Dubai", "forbidden": ["Skyscraper", "Desert", "Wealth", "Burj", "Luxury"] },
+    { "word": "Barcelona", "forbidden": ["Gaudi", "Spain", "Beach", "Catalan", "City"] },
+    { "word": "Amsterdam", "forbidden": ["Canal", "Bicycles", "Netherlands", "Tulips", "Coffee"] },
+    { "word": "Istanbul", "forbidden": ["Turkey", "Bosphorus", "Ottoman", "City", "Asia"] },
+    { "word": "Singapore", "forbidden": ["Merlion", "Lion", "City", "Clean", "Island"] },
+    { "word": "Vienna", "forbidden": ["Mozart", "Austria", "Opera", "Classical", "Music"] },
+    { "word": "Prague", "forbidden": ["Castle", "Czech", "Bohemian", "Bridge", "Historic"] },
+    { "word": "Budapest", "forbidden": ["Danube", "Thermal", "Hungary", "Bridge", "City"] },
+    { "word": "Los Angeles", "forbidden": ["Hollywood", "Movie", "City", "Star", "Beach"] },
+    { "word": "Toronto", "forbidden": ["Maple", "Canada", "Hockey", "City", "CN"] },
+    { "word": "Buenos Aires", "forbidden": ["Argentina", "Tango", "Plaza", "South", "City"] }
+  ]
+  

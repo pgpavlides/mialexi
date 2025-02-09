@@ -1,0 +1,23 @@
+[
+    { "word": "Pizza", "forbidden": ["Cheese", "Slice", "Crust", "Pepperoni", "Oven"] },
+    { "word": "Sushi", "forbidden": ["Rice", "Fish", "Seaweed", "Roll", "Wasabi"] },
+    { "word": "Burger", "forbidden": ["Beef", "Bun", "Fries", "Lettuce", "Cheese"] },
+    { "word": "Pasta", "forbidden": ["Italian", "Noodles", "Sauce", "Cheese", "Tomato"] },
+    { "word": "Salad", "forbidden": ["Lettuce", "Vegetable", "Healthy", "Dressing", "Green"] },
+    { "word": "Steak", "forbidden": ["Beef", "Grill", "Medium", "Rare", "Meat"] },
+    { "word": "Tacos", "forbidden": ["Mexican", "Shell", "Spicy", "Salsa", "Cheese"] },
+    { "word": "Ramen", "forbidden": ["Noodles", "Broth", "Japanese", "Soup", "Pork"] },
+    { "word": "Ice Cream", "forbidden": ["Cold", "Dessert", "Cone", "Sweet", "Scoop"] },
+    { "word": "Sandwich", "forbidden": ["Bread", "Ham", "Cheese", "Lettuce", "Turkey"] },
+    { "word": "Dumplings", "forbidden": ["Chinese", "Steamed", "Filling", "Wrap", "Sauce"] },
+    { "word": "Curry", "forbidden": ["Spicy", "Indian", "Sauce", "Rice", "Spice"] },
+    { "word": "BBQ", "forbidden": ["Grill", "Smoked", "Sauce", "Ribs", "Fire"] },
+    { "word": "Samosa", "forbidden": ["Indian", "Fried", "Spicy", "Potato", "Snack"] },
+    { "word": "Pancakes", "forbidden": ["Breakfast", "Syrup", "Fluffy", "Stack", "Butter"] },
+    { "word": "Waffles", "forbidden": ["Crispy", "Grid", "Syrup", "Belgian", "Breakfast"] },
+    { "word": "Hotdog", "forbidden": ["Sausage", "Bun", "Ketchup", "Mustard", "Snack"] },
+    { "word": "Falafel", "forbidden": ["Chickpea", "MiddleEast", "Fried", "Herbs", "Wrap"] },
+    { "word": "Paella", "forbidden": ["Spain", "Seafood", "Rice", "Saffron", "Pan"] },
+    { "word": "Lasagna", "forbidden": ["Pasta", "Cheese", "Layer", "Italian", "Bake"] }
+  ]
+  

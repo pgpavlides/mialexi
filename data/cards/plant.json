@@ -1,0 +1,23 @@
+[
+    { "word": "Rose", "forbidden": ["Thorn", "Red", "Flower", "Love", "Fragrant"] },
+    { "word": "Tulip", "forbidden": ["Spring", "Color", "Netherlands", "Bloom", "Petal"] },
+    { "word": "Oak", "forbidden": ["Tree", "Wood", "Forest", "Acorn", "Leaf"] },
+    { "word": "Pine", "forbidden": ["Evergreen", "Needle", "Cone", "Forest", "Resin"] },
+    { "word": "Maple", "forbidden": ["Syrup", "Leaf", "Canada", "Tree", "Red"] },
+    { "word": "Cherry", "forbidden": ["Blossom", "Fruit", "Tree", "Pink", "Spring"] },
+    { "word": "Daisy", "forbidden": ["White", "Yellow", "Flower", "Garden", "Petal"] },
+    { "word": "Sunflower", "forbidden": ["Yellow", "Seeds", "Tall", "Field", "Bloom"] },
+    { "word": "Orchid", "forbidden": ["Exotic", "Flower", "Tropical", "Elegant", "Delicate"] },
+    { "word": "Lavender", "forbidden": ["Purple", "Scent", "Herb", "Calm", "Field"] },
+    { "word": "Daffodil", "forbidden": ["Spring", "Yellow", "Flower", "Bulb", "Cheerful"] },
+    { "word": "Peony", "forbidden": ["Bloom", "Floral", "Rose", "Large", "Soft"] },
+    { "word": "Iris", "forbidden": ["Flower", "Color", "Purple", "Blue", "Stamen"] },
+    { "word": "Begonia", "forbidden": ["Plant", "Tropical", "Flower", "Leaf", "Color"] },
+    { "word": "Marigold", "forbidden": ["Gold", "Flower", "Bright", "Garden", "Sun"] },
+    { "word": "Hydrangea", "forbidden": ["Blue", "Pink", "Bloom", "Bush", "Flower"] },
+    { "word": "Lilac", "forbidden": ["Purple", "Spring", "Bloom", "Fragrant", "Shrub"] },
+    { "word": "Freesia", "forbidden": ["Flower", "Fragrant", "Colorful", "Garden", "Stem"] },
+    { "word": "Geranium", "forbidden": ["Flower", "Rose", "Potted", "Plant", "Leaf"] },
+    { "word": "Camellia", "forbidden": ["Flower", "Tea", "Bush", "Elegant", "Red"] }
+  ]
+  

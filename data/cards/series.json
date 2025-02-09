@@ -1,0 +1,23 @@
+[
+    { "word": "Breaking Bad", "forbidden": ["Walter", "Heisenberg", "Meth", "Chemistry", "Cook"] },
+    { "word": "Friends", "forbidden": ["Chandler", "Ross", "Rachel", "Monica", "Joey"] },
+    { "word": "The Office", "forbidden": ["Dunder", "Michael", "Scranton", "Paper", "Prank"] },
+    { "word": "Game of Thrones", "forbidden": ["Throne", "Winter", "King", "Stark", "Dragon"] },
+    { "word": "Stranger Things", "forbidden": ["Eleven", "Upside", "Mike", "Hopper", "Demogorgon"] },
+    { "word": "The Crown", "forbidden": ["Queen", "Royal", "England", "King", "Monarch"] },
+    { "word": "House of Cards", "forbidden": ["Frank", "Claire", "Politics", "Power", "White"] },
+    { "word": "Westworld", "forbidden": ["Robot", "Theme", "Park", "Hosts", "Maze"] },
+    { "word": "Sherlock", "forbidden": ["Detective", "Baker", "Watson", "London", "Mystery"] },
+    { "word": "Peaky Blinders", "forbidden": ["Shelby", "Gang", "Birmingham", "Hat", "Crime"] },
+    { "word": "Better Call Saul", "forbidden": ["Lawyer", "Jimmy", "Client", "Saul", "Fighting"] },
+    { "word": "Ozark", "forbidden": ["Money", "Cartel", "Lake", "Family", "Criminal"] },
+    { "word": "Narcos", "forbidden": ["Pablo", "Coke", "Colombia", "Drug", "Cartel"] },
+    { "word": "The Mandalorian", "forbidden": ["Star", "Baby", "Mando", "Space", "Armor"] },
+    { "word": "House", "forbidden": ["Doctor", "Cuddy", "Wilson", "Diagnosis", "Vicodin"] },
+    { "word": "Dexter", "forbidden": ["Blood", "Killer", "Miami", "Code", "Homicide"] },
+    { "word": "Vikings", "forbidden": ["Ragnar", "Longboat", "Warrior", "Saga", "Battle"] },
+    { "word": "Suits", "forbidden": ["Lawyer", "Harvey", "Mike", "Firm", "Case"] },
+    { "word": "Lost", "forbidden": ["Island", "Mystery", "Survivor", "Plane", "Smoke"] },
+    { "word": "The Witcher", "forbidden": ["Geralt", "Monster", "Sword", "Magic", "Kingdom"] }
+  ]
+  

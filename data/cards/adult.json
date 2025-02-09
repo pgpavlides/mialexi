@@ -1,0 +1,23 @@
+[
+    { "word": "Explicit1", "forbidden": ["NSFW1", "Adult1", "Mature1", "Forbidden1", "Xrated1"] },
+    { "word": "Explicit2", "forbidden": ["NSFW2", "Adult2", "Mature2", "Forbidden2", "Xrated2"] },
+    { "word": "Explicit3", "forbidden": ["NSFW3", "Adult3", "Mature3", "Forbidden3", "Xrated3"] },
+    { "word": "Explicit4", "forbidden": ["NSFW4", "Adult4", "Mature4", "Forbidden4", "Xrated4"] },
+    { "word": "Explicit5", "forbidden": ["NSFW5", "Adult5", "Mature5", "Forbidden5", "Xrated5"] },
+    { "word": "Explicit6", "forbidden": ["NSFW6", "Adult6", "Mature6", "Forbidden6", "Xrated6"] },
+    { "word": "Explicit7", "forbidden": ["NSFW7", "Adult7", "Mature7", "Forbidden7", "Xrated7"] },
+    { "word": "Explicit8", "forbidden": ["NSFW8", "Adult8", "Mature8", "Forbidden8", "Xrated8"] },
+    { "word": "Explicit9", "forbidden": ["NSFW9", "Adult9", "Mature9", "Forbidden9", "Xrated9"] },
+    { "word": "Explicit10", "forbidden": ["NSFW10", "Adult10", "Mature10", "Forbidden10", "Xrated10"] },
+    { "word": "Explicit11", "forbidden": ["NSFW11", "Adult11", "Mature11", "Forbidden11", "Xrated11"] },
+    { "word": "Explicit12", "forbidden": ["NSFW12", "Adult12", "Mature12", "Forbidden12", "Xrated12"] },
+    { "word": "Explicit13", "forbidden": ["NSFW13", "Adult13", "Mature13", "Forbidden13", "Xrated13"] },
+    { "word": "Explicit14", "forbidden": ["NSFW14", "Adult14", "Mature14", "Forbidden14", "Xrated14"] },
+    { "word": "Explicit15", "forbidden": ["NSFW15", "Adult15", "Mature15", "Forbidden15", "Xrated15"] },
+    { "word": "Explicit16", "forbidden": ["NSFW16", "Adult16", "Mature16", "Forbidden16", "Xrated16"] },
+    { "word": "Explicit17", "forbidden": ["NSFW17", "Adult17", "Mature17", "Forbidden17", "Xrated17"] },
+    { "word": "Explicit18", "forbidden": ["NSFW18", "Adult18", "Mature18", "Forbidden18", "Xrated18"] },
+    { "word": "Explicit19", "forbidden": ["NSFW19", "Adult19", "Mature19", "Forbidden19", "Xrated19"] },
+    { "word": "Explicit20", "forbidden": ["NSFW20", "Adult20", "Mature20", "Forbidden20", "Xrated20"] }
+  ]
+  

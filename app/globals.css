@@ -17,41 +17,39 @@
 body {
   color: var(--foreground);
   background: var(--background);
-
 }
 
-
 @font-face {
-  font-family: 'OpenDyslexic';
-  src: url('../fonts/OpenDyslexic-Regular.woff2') format('woff2');
+  font-family: "OpenDyslexic";
+  src: url("../fonts/OpenDyslexic-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'OpenDyslexic';
-  src: url('../fonts/OpenDyslexic-Bold.woff2') format('woff2');
+  font-family: "OpenDyslexic";
+  src: url("../fonts/OpenDyslexic-Bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'OpenDyslexic';
-  src: url('../fonts/OpenDyslexic-Italic.woff2') format('woff2');
+  font-family: "OpenDyslexic";
+  src: url("../fonts/OpenDyslexic-Italic.woff2") format("woff2");
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'OpenDyslexic';
-  src: url('../fonts/OpenDyslexic-Bold-Italic.woff2') format('woff2');
+  font-family: "OpenDyslexic";
+  src: url("../fonts/OpenDyslexic-Bold-Italic.woff2") format("woff2");
   font-weight: bold;
   font-style: italic;
 }
 
 /* Apply the font to the entire application */
 body {
-  font-family: 'OpenDyslexic', system-ui, -apple-system, sans-serif;
+  font-family: "OpenDyslexic", system-ui, -apple-system, sans-serif;
 }
 
 /* ===== Dark Themed Custom Scrollbar for WebKit Browsers ===== */
@@ -66,14 +64,22 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #8a2be2, #9b59b6); /* Gradient purple thumb */
+  background: linear-gradient(
+    180deg,
+    #8a2be2,
+    #9b59b6
+  ); /* Gradient purple thumb */
   border-radius: 10px;
   border: 3px solid #1e1e1e; /* Matches the dark track background */
   transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #9b59b6, #af7ac5); /* Lighter gradient on hover */
+  background: linear-gradient(
+    180deg,
+    #9b59b6,
+    #af7ac5
+  ); /* Lighter gradient on hover */
 }
 
 /* ===== Dark Themed Custom Scrollbar for Firefox ===== */
@@ -90,14 +96,28 @@ body {
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 9999;
-  background-color: white; /* or your desired background color */
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+  height: 100dvh;
+  min-height: -webkit-fill-available;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Optional: Hide Safari UI elements in iOS fullscreen mode */
+/* New class for scroll-up behavior */
+.ios-scroll-up {
+  /* Hide the bottom bar */
+  padding-bottom: 0 !important;
+}
+
+/* Optional: Add smooth transitions */
 .ios-fullscreen {
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
+  transition: padding-bottom 0.3s ease;
+}
+
+/* Prevent bounce effect but allow scrolling */
+.ios-fullscreen {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
 }

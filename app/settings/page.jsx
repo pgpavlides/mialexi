@@ -61,7 +61,7 @@ export default function Settings() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 md:p-8 bg-slate-900">
-      <div className="bg-slate-800 backdrop-blur-sm p-6 md:p-8 rounded-xl w-full max-w-[95%] xl:max-w-[1800px]">
+      <div className=" backdrop-blur-sm  md:p-8 rounded-xl w-full max-w-[95%] xl:max-w-[1800px]">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-white">Settings</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

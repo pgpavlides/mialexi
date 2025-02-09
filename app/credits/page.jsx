@@ -93,7 +93,7 @@ const ProfileCard = ({ name, title, bio, imageUrl, linkedIn, github, email }) =>
 export default function Credits() {
   const profiles = [
     {
-      name: "Panagiotis Pavlides",
+      name: "Giorgos Pavlidis",
       title: "Full Stack Developer",
       bio: "Passionate developer focused on creating intuitive and efficient web applications. Specialized in React, Node.js, and modern web technologies.",
       imageUrl: "/george.jfif",
@@ -103,7 +103,7 @@ export default function Credits() {
     },
     {
       name: "Mariana Gianneiou",
-      title: "UX/UI Designer",
+      title: "Creative Desinger",
       bio: "Creative designer with a keen eye for user experience and interface design. Specialized in creating beautiful and functional digital experiences.",
       imageUrl: "/marianna.jfif",
       linkedIn: "https://www.linkedin.com/in/mariana-gianneiou/",
@@ -125,7 +125,8 @@ export default function Credits() {
         animate={{ y: 0 }}
         className="text-3xl md:text-4xl font-bold text-white mb-6 md:mb-12 mt-16 md:mt-0"
       >
-        Meet Our Team
+        Creators
+        
       </motion.h1>
 
       <motion.div
